@@ -10,51 +10,105 @@
 
 ## 3. Часть 1. Выполнение команд в командной строке
 
-В данной части были повторены основные команды Git, аналогичные показанным в видео, с учетом особенностей командной строки Windows (CMD или PowerShell). Был создан локальный репозиторий и выполнены базовые операции.
+В данной части были повторены основные команды Git. Был создан локальный репозиторий и выполнены базовые операции.
 
 # Создание папки и переход в нее
-mkdir C:\git-lab
-cd C:\git-lab
+
+C:\Users\Vika>mkdir C:\git-lab
+C:\Users\Vika>cd C:\git-lab
+
 
 # Инициализация репозитория
-git init
+
+C:\git-lab>git init
+Initialized empty Git repository in C:/git-lab/.git/
+
 
 # Настройка имени и email пользователя (для коммитов)
-git config user.name "Ваше Имя"
-git config user.email "ваш.email@example.com"
 
-# Создание файла через echo 
-echo "# Мой первый проект" > README.md
+C:\git-lab>git config user.name "Vika"
+C:\git-lab>git config user.email "vikishul@yandex.ru"
 
-# Проверка статуса 
-git status
+
+# Создание файла через echo и проверка статуса
+
+C:\git-lab>echo "test" > README.md
+C:\git-lab>git status
+On branch master
+No commits yet
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+        README.md
+nothing added to commit but untracked files present (use "git add" to track)
+
 
 # Добавление файла в индекс 
-git add README.md
+
+C:\git-lab>git add README.md
+C:\git-lab>git status
+On branch master
+No commits yet
+Changes to be committed:
+  (use "git rm --cached <file>..." to unstage)
+        new file:   README.md
+
 
 # Создание первого коммита
-git commit -m "Начальный коммит: добавил README.md"
+
+C:\git-lab>git commit -m "Init: добавила README.md"
+[master (root-commit) 3fae99e] Init: добавила README.md
+ 1 file changed, 1 insertion(+)
+ create mode 100644 README.md
+
 
 # Просмотр истории коммитов
-git log --oneline
+
+C:\git-lab>git commit -m "Init: добавила README.md"
+[master (root-commit) 3fae99e] Init: добавила README.md
+ 1 file changed, 1 insertion(+)
+ create mode 100644 README.md
+
+C:\git-lab>git log --oneline
+3fae99e (HEAD -> master) Init: добавила README.md
+
 
 # Создание и переход в новую ветку
-git branch feature-desc
-git checkout feature-desc
-# Или одной командой: git checkout -b feature-desc
 
-# Внесение изменений (например, добавление строки в README.md через echo)
-echo "Это учебный проект." >> README.md
+C:\git-lab>git branch feature-desc
+C:\git-lab>git checkout feature-desc
+Switched to branch 'feature-desc'
+
+
+# Внесение изменений 
+
+C:\git-lab>echo "Это тестовый проект." >> README.md
+
 
 # Коммит изменений в ветке
-git add README.md
-git commit -m "Добавил описание проекта"
+
+C:\git-lab>git add README.md
+C:\git-lab>git commit -m "Добавил описание проекта"
+[feature-desc 7162deb] Добавил описание проекта
+ 1 file changed, 1 insertion(+)
+
 
 # Возврат в основную ветку
-git checkout master
+
+C:\git-lab>git checkout master
+Switched to branch 'master'
+
 
 # Слияние изменений из ветки feature-desc
-git merge feature-desc
+
+C:\git-lab>git merge feature-desc
+Updating 3fae99e..7162deb
+Fast-forward
+ README.md | 1 +
+ 1 file changed, 1 insertion(+)
+
 
 # Просмотр финальной истории
-git log --oneline --graph
+
+C:\git-lab>git log --oneline --graph
+* 7162deb (HEAD -> master, feature-desc) Добавил описание проекта
+* 3fae99e Init: добавила README.md
